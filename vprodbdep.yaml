@@ -38,8 +38,9 @@ spec:
             fsType: ext4
       initContainers:
         - name: busybox
-          image: busybox:latest
-          args: ["rm", "rf", "/var/lib/mysql/lost+found"]
+          image: busybox:1.35
+          args: ["rm", "rf", "/var/lib/mysql/lost+found"]  
+          command: ['sh', '-c', 'until nslookup vprodb; do echo waiting for mydb; sleep 2; done;']
           volumeMounts:
             - name: vpro-db-data
               mountPath: /var/lib/mysql
