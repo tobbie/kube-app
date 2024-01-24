@@ -15,7 +15,7 @@ spec:
       - name: vproapp
         image: docktobi/vprofileapp
         ports:
-          - name: vprofile-port
+          - name: vproapp-port
             containerPort: 8080
       initContainers:
         - name: init-mydb
